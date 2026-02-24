@@ -17,6 +17,9 @@
   <body>
     <header class="site-header">
       <div class="container site-header__inner">
+        <button type="button" class="site-header__menu-btn" aria-label="Mở menu" aria-expanded="false" aria-controls="site-nav">
+          <span class="site-header__menu-icon"></span>
+        </button>
         <a href="#top" class="site-header__brand">
           <img
             src="Logo/LOGO-TRẮNG.png"
@@ -24,7 +27,7 @@
             class="site-header__logo"
           />
         </a>
-        <nav class="site-nav">
+        <nav class="site-nav" id="site-nav">
           <a href="#top" class="site-nav__link">Trang chủ</a>
           <a href="#products" class="site-nav__link">Sản phẩm</a>
           <a href="#story" class="site-nav__link">Thương hiệu</a>
@@ -33,6 +36,15 @@
           <a href="#beauty-secret" class="site-nav__link">Hợp tác</a>
           <a href="#contact" class="site-nav__link">Liên hệ</a>
         </nav>
+      </div>
+      <div class="site-nav__dropdown" id="site-nav-dropdown" aria-hidden="true">
+        <a href="#top" class="site-nav__dropdown-link">Trang chủ</a>
+        <a href="#products" class="site-nav__dropdown-link">Sản phẩm</a>
+        <a href="#story" class="site-nav__dropdown-link">Thương hiệu</a>
+        <a href="#benefits" class="site-nav__dropdown-link">Tinh hoa dưỡng da</a>
+        <a href="#how" class="site-nav__dropdown-link">Uy tín thương hiệu</a>
+        <a href="#beauty-secret" class="site-nav__dropdown-link">Hợp tác</a>
+        <a href="#contact" class="site-nav__dropdown-link">Liên hệ</a>
       </div>
     </header>
 
@@ -183,7 +195,7 @@
                 Hàng triệu phụ nữ Việt Nam<br />
                 tin chọn Ludee Care
               </h2>
-              <p class="image-banner__body">
+              <p class="image-banner__body image-banner__body--overlay">
                 Hàng triệu phụ nữ Việt Nam tin chọn Ludee Care như một bí quyết<br />
                 chăm sóc da mỗi ngày. Với công thức giàu dưỡng chất cùng<br />
                 hương thơm cuốn hút, Ludee Care mang đến làn da mềm mịn,<br />
@@ -191,6 +203,9 @@
               </p>
             </div>
           </div>
+          <p class="image-banner__body image-banner__body--below">
+            Hàng triệu phụ nữ Việt Nam tin chọn Ludee Care như một bí quyết chăm sóc da mỗi ngày. Với công thức giàu dưỡng chất cùng hương thơm cuốn hút, Ludee Care mang đến làn da mềm mịn, tươi sáng và cảm giác tự tin trọn vẹn trong từng khoảnh khắc.
+          </p>
         </div>
       </section>
 
@@ -231,7 +246,7 @@
             </article>
             <article class="beauty-secret__card">
               <h3 class="beauty-secret__card-title">Thương hiệu tâm huyết</h3>
-              <p class="beauty-secret__card-text">Được phát triển từ tâm huyết của chủ nhãn hàng với hơn 5 năm kinh nghiệm trong lĩnh vực phân phối, am hiểu thị trường và luôn đặt lợi ích đối tác lên hàng đầu.</p>
+              <p class="beauty-secret__card-text">Được phát triển từ tâm huyết của chủ nhãn hàng với hơn 8 năm kinh nghiệm trong lĩnh vực phân phối hàng tiêu dùng Thái Lan.</p>
             </article>
           </div>
         </div>
@@ -293,8 +308,7 @@
                 Gửi thông tin
               </button>
               <p class="form__note">
-                Bằng cách gửi thông tin, bạn đồng ý để Ludee Care liên hệ tư
-                vấn qua điện thoại hoặc email.
+                Sau khi nhận thông tin, đội ngũ chăm sóc khách hàng sẽ liên hệ bạn trong thời gian sớm nhất.
               </p>
             </form>
           </div>
@@ -309,10 +323,10 @@
           Thương hiệu chăm sóc cá nhân – Nuôi dưỡng vẻ đẹp tỏa sáng mỗi ngày.
         </p>
         <p class="footer__contact">
-          Số điện thoại: <a href="tel:079886886" class="footer__link">079.886.886</a>
+          Số điện thoại: <a href="tel:079886886" class="footer__link">079.886.8886</a>
         </p>
         <p class="footer__contact">
-          Địa chỉ: <a href="https://maps.app.goo.gl/S9Ecdm1DkWUrhaQM9" target="_blank" rel="noopener noreferrer" class="footer__link">31 Dân Tộc, Phường Tân Phú, Thành phố Hồ Chí Minh</a>
+          Địa chỉ: <a href="https://maps.app.goo.gl/S9Ecdm1DkWUrhaQM9" target="_blank" rel="noopener noreferrer" class="footer__link">31 Dân Tộc, Phường Tân Sơn Nhì, Thành phố Hồ Chí Minh</a>
         </p>
         <div class="footer__social" aria-label="Mạng xã hội">
           <a href="#" class="footer__social-link" aria-label="Facebook" title="Facebook">
@@ -349,6 +363,26 @@
     </div>
 
     <script>
+      (function () {
+        var menuBtn = document.querySelector(".site-header__menu-btn");
+        var dropdown = document.getElementById("site-nav-dropdown");
+        if (menuBtn && dropdown) {
+          menuBtn.addEventListener("click", function () {
+            var isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+            menuBtn.setAttribute("aria-expanded", !isOpen);
+            dropdown.classList.toggle("site-nav__dropdown--open", !isOpen);
+            dropdown.setAttribute("aria-hidden", isOpen);
+          });
+          dropdown.querySelectorAll(".site-nav__dropdown-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+              menuBtn.setAttribute("aria-expanded", "false");
+              dropdown.classList.remove("site-nav__dropdown--open");
+              dropdown.setAttribute("aria-hidden", "true");
+            });
+          });
+        }
+      })();
+
       (function () {
         var products = {
           1: {

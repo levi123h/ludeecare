@@ -72,6 +72,52 @@ img {
   padding-block: 10px;
 }
 
+.site-header__menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.site-header__menu-icon {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  box-shadow: 0 6px 0 currentColor, 0 12px 0 currentColor;
+  position: relative;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.site-header__menu-icon::before,
+.site-header__menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.site-header__menu-icon::before {
+  top: 8px;
+}
+
+.site-header__menu-icon::after {
+  top: 8px;
+}
+
 .site-header__brand {
   display: inline-flex;
   align-items: center;
@@ -121,20 +167,87 @@ img {
 
 @media (max-width: 780px) {
   .site-header__inner {
-    gap: 18px;
+    position: relative;
+    justify-content: center;
+    gap: 0;
   }
 
-  .site-nav {
-    gap: 12px;
-    font-size: 0.98rem;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+  .site-header__menu-btn {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .site-header__menu-btn[aria-expanded="true"] .site-header__menu-icon {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .site-header__menu-btn[aria-expanded="true"] .site-header__menu-icon::before,
+  .site-header__menu-btn[aria-expanded="true"] .site-header__menu-icon::after {
+    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .site-header__menu-btn[aria-expanded="true"] .site-header__menu-icon::after {
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  .site-header__brand {
+    flex: 0 0 auto;
   }
 
   .site-header__logo {
     height: 32px;
     transform: scale(2.4);
+    transform-origin: center center;
   }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-nav__dropdown {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .site-nav__dropdown.site-nav__dropdown--open {
+    max-height: 400px;
+  }
+
+  .site-nav__dropdown-link {
+    display: block;
+    padding: 14px 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .site-nav__dropdown-link:last-child {
+    border-bottom: none;
+  }
+
+  .site-nav__dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.site-nav__dropdown {
+  display: none;
 }
 
 /* Buttons */
@@ -233,6 +346,16 @@ img {
   background: var(--color-primary-light);
   border-top-left-radius: 50% 100%;
   border-top-right-radius: 50% 100%;
+}
+
+@media (max-width: 780px) {
+  .hero__visual {
+    height: 320px;
+  }
+
+  .hero__curve {
+    display: none;
+  }
 }
 
 /* Generic section styling */
@@ -511,16 +634,17 @@ img {
   z-index: 0;
 }
 .bubble--1 {
-  background-image: url("Hinh anh/Dau cam gao/sesame-oil-sesame-seeds-marble-background.jpg");
+  background-image: url("Hinh anh/Dau cam gao/high-angle-bowls-with-fine-powder-dried-flowers.jpg");
 }
 .bubble--2 {
-  background-image: url("Hinh anh/Goat/white-baby-goat-standing-green-grass-with-yellow-flowers.jpg");
+  background-image: url("Hinh anh/Goat/sua-tam-de.png");
+  background-size: 110%;
 }
 .bubble--3 {
   background-image: url("Hinh anh/Huong thơm/hands-with-pile-petals.jpg");
 }
 .bubble--4 {
-  background-image: url("Hinh anh/Nguyen lieu 2/m_wie_moehre-plant-8338691_1280.jpg");
+  background-image: url("Hinh anh/Nguyen lieu 2/close-up-picture-sapling-plant-is-growing.jpg");
 }
 .bubble-item .bubble:hover {
   transform: translateY(-4px) scale(1.03);
@@ -591,6 +715,54 @@ img {
   font-size: 1.31rem;
   line-height: 1.7;
   color: var(--color-text);
+}
+
+.image-banner__body--below {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .image-banner {
+    display: flex;
+    flex-direction: column;
+    max-height: none;
+  }
+
+  .image-banner__img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .image-banner__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 380px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-banner__content {
+    text-align: center;
+    padding: 20px 16px;
+  }
+
+  .image-banner__body--overlay {
+    display: none;
+  }
+
+  .image-banner__body--below {
+    display: block;
+    margin: 0;
+    padding: 24px 16px;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    background: var(--color-bg);
+  }
 }
 
 /* Section: Bí quyết chăm sóc sắc đẹp */
@@ -705,125 +877,17 @@ img {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
   text-align: center;
   transform-origin: center;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
-/* Sequential card highlight animation - 1 card per second */
-@keyframes cardHighlight1 {
-  0%, 20% { background: #B18AF6; transform: scale(1.15); }
-  20.01%, 100% { background: #ffffff; transform: scale(1); }
-}
-@keyframes cardHighlight2 {
-  0%, 20% { background: #ffffff; transform: scale(1); }
-  20%, 40% { background: #B18AF6; transform: scale(1.15); }
-  40.01%, 100% { background: #ffffff; transform: scale(1); }
-}
-@keyframes cardHighlight3 {
-  0%, 40% { background: #ffffff; transform: scale(1); }
-  40%, 60% { background: #B18AF6; transform: scale(1.15); }
-  60.01%, 100% { background: #ffffff; transform: scale(1); }
-}
-@keyframes cardHighlight4 {
-  0%, 60% { background: #ffffff; transform: scale(1); }
-  60%, 80% { background: #B18AF6; transform: scale(1.15); }
-  80.01%, 100% { background: #ffffff; transform: scale(1); }
-}
-@keyframes cardHighlight5 {
-  0%, 80% { background: #ffffff; transform: scale(1); }
-  80%, 100% { background: #B18AF6; transform: scale(1.15); }
+.beauty-secret__card:hover {
+  background: #B18AF6;
+  transform: scale(1.15);
 }
 
-@keyframes cardTextHighlight1 {
-  0%, 20% { color: #ffffff; }
-  20.01%, 100% { color: var(--color-text); }
-}
-@keyframes cardTextHighlight2 {
-  0%, 20% { color: var(--color-text); }
-  20%, 40% { color: #ffffff; }
-  40.01%, 100% { color: var(--color-text); }
-}
-@keyframes cardTextHighlight3 {
-  0%, 40% { color: var(--color-text); }
-  40%, 60% { color: #ffffff; }
-  60.01%, 100% { color: var(--color-text); }
-}
-@keyframes cardTextHighlight4 {
-  0%, 60% { color: var(--color-text); }
-  60%, 80% { color: #ffffff; }
-  80.01%, 100% { color: var(--color-text); }
-}
-@keyframes cardTextHighlight5 {
-  0%, 80% { color: var(--color-text); }
-  80%, 100% { color: #ffffff; }
-}
-
-@keyframes cardBodyHighlight1 {
-  0%, 20% { color: #ffffff; }
-  20.01%, 100% { color: var(--color-text-soft); }
-}
-@keyframes cardBodyHighlight2 {
-  0%, 20% { color: var(--color-text-soft); }
-  20%, 40% { color: #ffffff; }
-  40.01%, 100% { color: var(--color-text-soft); }
-}
-@keyframes cardBodyHighlight3 {
-  0%, 40% { color: var(--color-text-soft); }
-  40%, 60% { color: #ffffff; }
-  60.01%, 100% { color: var(--color-text-soft); }
-}
-@keyframes cardBodyHighlight4 {
-  0%, 60% { color: var(--color-text-soft); }
-  60%, 80% { color: #ffffff; }
-  80.01%, 100% { color: var(--color-text-soft); }
-}
-@keyframes cardBodyHighlight5 {
-  0%, 80% { color: var(--color-text-soft); }
-  80%, 100% { color: #ffffff; }
-}
-
-.beauty-secret__card:nth-child(1) {
-  animation: cardHighlight1 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(1) .beauty-secret__card-title {
-  animation: cardTextHighlight1 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(1) .beauty-secret__card-text {
-  animation: cardBodyHighlight1 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(2) {
-  animation: cardHighlight2 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(2) .beauty-secret__card-title {
-  animation: cardTextHighlight2 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(2) .beauty-secret__card-text {
-  animation: cardBodyHighlight2 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(3) {
-  animation: cardHighlight3 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(3) .beauty-secret__card-title {
-  animation: cardTextHighlight3 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(3) .beauty-secret__card-text {
-  animation: cardBodyHighlight3 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(4) {
-  animation: cardHighlight4 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(4) .beauty-secret__card-title {
-  animation: cardTextHighlight4 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(4) .beauty-secret__card-text {
-  animation: cardBodyHighlight4 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(5) {
-  animation: cardHighlight5 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(5) .beauty-secret__card-title {
-  animation: cardTextHighlight5 7.5s steps(1) infinite;
-}
-.beauty-secret__card:nth-child(5) .beauty-secret__card-text {
-  animation: cardBodyHighlight5 7.5s steps(1) infinite;
+.beauty-secret__card:hover .beauty-secret__card-title,
+.beauty-secret__card:hover .beauty-secret__card-text {
+  color: #ffffff;
 }
 
 .beauty-secret__card-icon {
@@ -1173,17 +1237,41 @@ img {
 }
 
 @media (max-width: 700px) {
+  .product-modal {
+    padding: 12px;
+    align-items: flex-start;
+  }
   .product-modal__box {
     flex-direction: column;
-    max-height: 85vh;
+    max-height: 90vh;
+    overflow-y: auto;
   }
   .product-modal__img-wrap {
     flex: 0 0 auto;
-    padding: 24px;
-    max-height: 40vh;
+    padding: 20px;
+    max-height: 220px;
+    min-height: 180px;
+  }
+  .product-modal__img {
+    max-height: 180px;
+    width: auto;
+    object-fit: contain;
   }
   .product-modal__body {
-    padding: 20px 24px 24px;
+    padding: 16px 20px 24px;
+  }
+  .product-modal__title {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .product-modal__img-wrap {
+    max-height: 180px;
+    padding: 16px;
+  }
+  .product-modal__img {
+    max-height: 150px;
   }
 }
 
