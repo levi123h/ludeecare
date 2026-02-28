@@ -1,5 +1,6 @@
 .DS_Store
 Thumbs.db
+*.psd
 *.log
 .env
 github-recovery-codes.txt

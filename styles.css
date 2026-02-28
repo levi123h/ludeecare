@@ -248,10 +248,6 @@ img {
   }
 }
 
-.site-nav__dropdown {
-  display: none;
-}
-
 /* Ensure dropdown never shows on desktop - prevents duplicate nav strip */
 @media (min-width: 781px) {
   .site-nav__dropdown {
