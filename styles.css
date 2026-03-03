@@ -577,6 +577,27 @@ img {
   z-index: 1;
 }
 
+.product--coming-soon .product__img {
+  filter: blur(3px);
+  opacity: 0.75;
+}
+
+.product--coming-soon .product__img-wrap::after {
+  content: "Sắp ra mắt";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fahkwang", system-ui, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f1f85;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  z-index: 2;
+}
+
 .product__cta {
   margin-top: 16px;
   width: 100%;
@@ -744,6 +765,7 @@ img {
     height: 380px;
     object-fit: cover;
     flex-shrink: 0;
+    object-position: center right;
   }
 
   .image-banner__overlay {

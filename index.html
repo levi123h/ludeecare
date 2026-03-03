@@ -47,7 +47,7 @@
           <a href="#products" class="site-nav__link">Sản phẩm</a>
           <a href="#story" class="site-nav__link">Thương hiệu</a>
           <a href="#benefits" class="site-nav__link">Tinh hoa dưỡng da</a>
-          <a href="#how" class="site-nav__link">Uy tín thương hiệu</a>
+          <a href="/ve-chung-toi" class="site-nav__link">Về chúng tôi</a>
           <a href="#beauty-secret" class="site-nav__link">Hợp tác</a>
           <a href="#contact" class="site-nav__link">Liên hệ</a>
         </nav>
@@ -57,7 +57,7 @@
         <a href="#products" class="site-nav__dropdown-link">Sản phẩm</a>
         <a href="#story" class="site-nav__dropdown-link">Thương hiệu</a>
         <a href="#benefits" class="site-nav__dropdown-link">Tinh hoa dưỡng da</a>
-        <a href="#how" class="site-nav__dropdown-link">Uy tín thương hiệu</a>
+        <a href="/ve-chung-toi" class="site-nav__dropdown-link">Về chúng tôi</a>
         <a href="#beauty-secret" class="site-nav__dropdown-link">Hợp tác</a>
         <a href="#contact" class="site-nav__dropdown-link">Liên hệ</a>
       </div>
@@ -67,7 +67,7 @@
       <div class="hero__visual hero__visual--full">
         <video
           class="hero__video"
-          src="Video banner/Video_Revision_Request.mp4"
+          src="Video banner/video 2.mp4"
           autoplay
           muted
           loop
@@ -99,7 +99,7 @@
               </div>
               <button type="button" class="btn btn--primary product__cta" data-product="1">Xem sản phẩm</button>
             </article>
-            <article class="card product">
+            <article class="card product product--coming-soon">
               <h3 class="product__name">
                 Sữa tắm Ludee Care hương hoa vanilla &amp; dâu tây
               </h3>
@@ -110,9 +110,11 @@
                   alt="Sữa tắm Ludee Care hương hoa vanilla &amp; dâu tây"
                 />
               </div>
-              <button type="button" class="btn btn--primary product__cta" data-product="2">Xem sản phẩm</button>
+              <button type="button" class="btn btn--primary product__cta product__cta--disabled" aria-disabled="true">
+                Sản phẩm sắp ra mắt
+              </button>
             </article>
-            <article class="card product">
+            <article class="card product product--coming-soon">
               <h3 class="product__name">
                 Sữa tắm Ludee Care hương hoa linh lan
               </h3>
@@ -123,7 +125,9 @@
                   alt="Sữa tắm Ludee Care hương hoa linh lan"
                 />
               </div>
-              <button type="button" class="btn btn--primary product__cta" data-product="3">Xem sản phẩm</button>
+              <button type="button" class="btn btn--primary product__cta product__cta--disabled" aria-disabled="true">
+                Sản phẩm sắp ra mắt
+              </button>
             </article>
           </div>
         </div>
@@ -440,7 +444,7 @@
           modal.classList.remove("product-modal--open");
           document.body.style.overflow = "";
         }
-        document.querySelectorAll(".product__cta").forEach(function (btn) {
+        document.querySelectorAll(".product__cta:not(.product__cta--disabled)").forEach(function (btn) {
           btn.addEventListener("click", function () {
             openModal(this.getAttribute("data-product"));
           });

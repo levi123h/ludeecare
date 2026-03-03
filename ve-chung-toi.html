@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Về chúng tôi - Ludee Care</title>
+    <meta name="description" content="Tìm hiểu về Ludee Care - thương hiệu chăm sóc cá nhân cao cấp, tầm nhìn và sứ mệnh từ Giám đốc Nguyễn Thị Trúc Mai." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@400;500;600;700&family=Afacad+Flux:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="Logo/logo-không-nền.png" />
+    <style>
+      .about-hero { padding-block: 48px 32px; }
+      .about-hero .section__title { font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 24px; }
+      .about-ceo { font-family: "Fahkwang", sans-serif; font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 8px; }
+      .about-subtitle { font-family: "Fahkwang", sans-serif; font-size: 1.4rem; font-weight: 600; color: var(--color-text); margin-bottom: 20px; }
+      .about-section__title { font-family: "Fahkwang", sans-serif; font-size: var(--title-h2-size); font-weight: 600; color: var(--color-primary); margin: 0 0 24px; }
+      .about-section__text { font-size: 1.08rem; line-height: 1.75; color: var(--color-text); margin: 0 0 16px; }
+      .about-section__text:last-child { margin-bottom: 0; }
+      .about-quote { font-style: italic; color: var(--color-primary); padding-left: 20px; border-left: 3px solid var(--color-primary-soft); margin: 24px 0; }
+      .about-list { margin: 20px 0; padding-left: 24px; }
+      .about-list li { margin-bottom: 10px; line-height: 1.7; }
+      .about-hero .section__image { max-width: 395px; }
+      .about-ceo-img { border-radius: 16px; overflow: hidden; aspect-ratio: 3/4; object-fit: cover; }
+      .about-inline-img { border-radius: 12px; max-width: 100%; margin: 24px 0; display: block; }
+      .about-journey .section__image { max-width: 420px; }
+      .about-journey-img { border-radius: 16px; width: 100%; display: block; object-fit: cover; }
+      @media (max-width: 780px) {
+        .about-hero { padding-block: 32px 24px; }
+        .about-hero .section__image { max-width: 315px; margin-inline: auto; }
+        .about-journey .section__image { max-width: 300px; }
+        .about-ceo-img { aspect-ratio: 3/4; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <button type="button" class="site-header__menu-btn" aria-label="Mở menu" aria-expanded="false" aria-controls="site-nav">
+          <span class="site-header__menu-icon"></span>
+        </button>
+        <a href="index.html" class="site-header__brand">
+          <img src="Logo/LOGO-TRẮNG.png" alt="Logo Ludee Care" class="site-header__logo" />
+        </a>
+        <nav class="site-nav" id="site-nav">
+          <a href="index.html" class="site-nav__link">Trang chủ</a>
+          <a href="index.html#products" class="site-nav__link">Sản phẩm</a>
+          <a href="index.html#story" class="site-nav__link">Thương hiệu</a>
+          <a href="index.html#benefits" class="site-nav__link">Tinh hoa dưỡng da</a>
+          <a href="/ve-chung-toi" class="site-nav__link">Về chúng tôi</a>
+          <a href="index.html#beauty-secret" class="site-nav__link">Hợp tác</a>
+          <a href="index.html#contact" class="site-nav__link">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="site-nav__dropdown" id="site-nav-dropdown" aria-hidden="true">
+        <a href="index.html" class="site-nav__dropdown-link">Trang chủ</a>
+        <a href="index.html#products" class="site-nav__dropdown-link">Sản phẩm</a>
+        <a href="index.html#story" class="site-nav__dropdown-link">Thương hiệu</a>
+        <a href="index.html#benefits" class="site-nav__dropdown-link">Tinh hoa dưỡng da</a>
+        <a href="/ve-chung-toi" class="site-nav__dropdown-link">Về chúng tôi</a>
+        <a href="index.html#beauty-secret" class="site-nav__dropdown-link">Hợp tác</a>
+        <a href="index.html#contact" class="site-nav__dropdown-link">Liên hệ</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Section 1: CEO & Tầm nhìn -->
+      <section class="section section--muted about-hero" id="top">
+        <div class="container section--two-col">
+          <div class="section__image">
+            <img
+              src="Trang về chúng tôi/Hình ảnh/Trúc Mai CEO.jpg"
+              alt="Giám đốc Nguyễn Thị Trúc Mai"
+              class="about-ceo-img section__img"
+            />
+          </div>
+          <div class="section__content">
+            <p class="about-ceo">Giám đốc</p>
+            <h1 class="about-subtitle">Nguyễn Thị Trúc Mai</h1>
+            <h2 class="about-section__title">TẦM NHÌN - SỨ MỆNH</h2>
+            <p class="about-section__text">
+              Bằng sự thấu hiểu sâu sắc người tiêu dùng Việt, Ludee Care luôn cải tiến, nâng tầm các sản phẩm chăm sóc cá nhân chất lượng và an toàn.
+            </p>
+            <p class="about-section__text">
+              Với hơn 8 năm kinh nghiệm trong lĩnh vực phân phối hàng tiêu dùng Thái Lan, Giám đốc Nguyễn Thị Trúc Mai đã tích lũy nền tảng vững chắc về thị trường, sản phẩm và hành vi khách hàng. Thấu hiểu nhu cầu ngày càng cao đối với các sản phẩm chăm sóc cá nhân, bà đã định hướng phát triển những dòng sản phẩm không chỉ đáp ứng tiêu chuẩn chất lượng mà còn chú trọng đến trải nghiệm sử dụng và cảm xúc của người dùng.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Câu chuyện thương hiệu -->
+      <section class="section">
+        <div class="container section--narrow">
+          <h2 class="about-section__title" style="text-align: center; margin-bottom: 32px;">CÂU CHUYỆN THƯƠNG HIỆU</h2>
+          <p class="about-section__text">
+            Ludee Care bắt đầu từ một câu hỏi giản dị:
+          </p>
+          <blockquote class="about-quote">
+            "Vì sao những sản phẩm chăm sóc cá nhân chúng ta sử dụng mỗi ngày lại chưa thực sự được đầu tư đúng mức về trải nghiệm và cảm xúc?"
+          </blockquote>
+          <p class="about-section__text">
+            Với hơn 8 năm kinh nghiệm trong lĩnh vực phân phối hàng tiêu dùng Thái Lan, Giám đốc Nguyễn Thị Trúc Mai đã có cơ hội làm việc trực tiếp với hàng trăm sản phẩm, thương hiệu và nhà sản xuất. Sự va chạm thực tế với thị trường giúp bà nhận ra rằng người tiêu dùng Việt không chỉ cần một sản phẩm "đủ dùng", mà họ xứng đáng có những sản phẩm chăm sóc cá nhân được đầu tư bài bản, chỉn chu từ chất lượng, hương thơm đến thiết kế bao bì và cảm giác khi sử dụng.
+          </p>
+          <p class="about-section__text">
+            Từ đó, Ludee Care ra đời – không chỉ là một thương hiệu, mà là một cam kết.
+          </p>
+          <p class="about-section__text">
+            Cam kết mang đến các sản phẩm chăm sóc cá nhân được chọn lọc kỹ lưỡng, ứng dụng công nghệ sản xuất hiện đại, tuân thủ quy trình kiểm soát chất lượng nghiêm ngặt và phù hợp với khí hậu, thói quen sinh hoạt của người Việt.
+          </p>
+          <img src="Trang về chúng tôi/Hình ảnh/nhan vien.png" alt="Đội ngũ nhân viên Ludee Care" class="about-inline-img" />
+          <p class="about-section__text">
+            Ludee Care tin rằng chăm sóc bản thân không phải là điều xa xỉ. Đó là một thói quen nhỏ nhưng có thể tạo nên sự khác biệt lớn trong cách mỗi người cảm nhận về chính mình. Một hương thơm dễ chịu sau giờ làm việc dài, một thiết kế tiện lợi trong phòng tắm, một trải nghiệm mượt mà trên làn da – tất cả đều góp phần nâng cao chất lượng cuộc sống.
+          </p>
+          <p class="about-section__text">
+            Giống như những thương hiệu lớn bắt đầu từ một giá trị cốt lõi và bền bỉ theo đuổi nó qua nhiều năm, Ludee Care chọn cho mình con đường phát triển dài hạn:
+          </p>
+          <ul class="about-list">
+            <li>Không chạy theo xu hướng ngắn hạn.</li>
+            <li>Không đánh đổi chất lượng để giảm chi phí.</li>
+            <li>Không thỏa hiệp với trải nghiệm người dùng.</li>
+          </ul>
+          <p class="about-section__text">
+            Tầm nhìn của Ludee Care là trở thành thương hiệu chăm sóc cá nhân được tin tưởng trong mỗi gia đình Việt – nơi mỗi sản phẩm không chỉ hoàn thành chức năng làm sạch hay chăm sóc, mà còn mang lại cảm giác tự tin, thư giãn và yêu thương bản thân mỗi ngày.
+          </p>
+          <p class="about-section__text" style="font-weight: 600; font-size: 1.15rem; color: var(--color-primary); margin-top: 32px;">
+            Ludee Care không chỉ tạo ra sản phẩm.<br />
+            Chúng tôi xây dựng một chuẩn mực chăm sóc mới – bắt đầu từ những điều giản dị nhất.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: Hành trình nuôi dưỡng vẻ đẹp tỏa sáng -->
+      <section class="section section--muted about-hero about-journey">
+        <div class="container section--two-col">
+          <div class="section__image">
+            <img
+              src="Trang về chúng tôi/Hình ảnh/hanh trinh 2.png"
+              alt="Hành trình nuôi dưỡng vẻ đẹp tỏa sáng"
+              class="about-journey-img section__img"
+            />
+          </div>
+          <div class="section__content">
+            <h2 class="about-section__title">HÀNH TRÌNH NUÔI DƯỠNG VẺ ĐẸP TỎA SÁNG</h2>
+            <p class="about-section__text">
+              Ludee Care ra đời không chỉ với mong muốn tạo nên những sản phẩm chăm sóc cá nhân chất lượng, mà còn với khát khao đồng hành cùng phụ nữ Việt trên hành trình nuôi dưỡng vẻ đẹp bền vững.
+            </p>
+            <p class="about-section__text">
+              Chúng tôi tin rằng vẻ đẹp không đến từ những thay đổi vội vàng, mà được vun đắp từ những thói quen chăm sóc nhỏ bé mỗi ngày. Vì vậy, từng công thức đều được nghiên cứu kỹ lưỡng, chọn lọc thành phần cẩn trọng và trải qua quá trình thử nghiệm nghiêm túc trước khi đến tay khách hàng.
+            </p>
+            <p class="about-section__text">
+              Mỗi sản phẩm không chỉ đơn thuần làm sạch hay nuôi dưỡng làn da, mà còn mang theo tâm huyết và trách nhiệm của đội ngũ phát triển thương hiệu – với mong muốn đem lại cảm giác thư giãn, tự tin và được yêu thương trong từng khoảnh khắc chăm sóc bản thân.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__content">
+        <img src="Logo/logo-không-nền.png" alt="Ludee Care" class="footer__logo" />
+        <p class="footer__text">
+          Thương hiệu chăm sóc cá nhân – Nuôi dưỡng vẻ đẹp tỏa sáng mỗi ngày.
+        </p>
+        <p class="footer__contact">
+          Số điện thoại: <a href="tel:079886886" class="footer__link">079.886.8886</a>
+        </p>
+        <p class="footer__contact">
+          Địa chỉ: <a href="https://maps.app.goo.gl/S9Ecdm1DkWUrhaQM9" target="_blank" rel="noopener noreferrer" class="footer__link">31 Dân Tộc, Phường Tân Sơn Nhì, Thành phố Hồ Chí Minh</a>
+        </p>
+        <div class="footer__social" aria-label="Mạng xã hội">
+          <a href="#" class="footer__social-link" aria-label="Facebook" title="Facebook">
+            <svg class="footer__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Tiktok" title="Tiktok">
+            <svg class="footer__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Youtube" title="Youtube">
+            <svg class="footer__icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var menuBtn = document.querySelector(".site-header__menu-btn");
+        var dropdown = document.getElementById("site-nav-dropdown");
+        if (menuBtn && dropdown) {
+          menuBtn.addEventListener("click", function () {
+            var isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+            menuBtn.setAttribute("aria-expanded", !isOpen);
+            dropdown.classList.toggle("site-nav__dropdown--open", !isOpen);
+            dropdown.setAttribute("aria-hidden", isOpen);
+          });
+          dropdown.querySelectorAll(".site-nav__dropdown-link").forEach(function (link) {
+            link.addEventListener("click", function () {
+              menuBtn.setAttribute("aria-expanded", "false");
+              dropdown.classList.remove("site-nav__dropdown--open");
+              dropdown.setAttribute("aria-hidden", "true");
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
