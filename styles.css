@@ -582,6 +582,12 @@ img {
   opacity: 0.75;
 }
 
+/* Keep same frame size as card 1 when card 2/3 have no image */
+.product--coming-soon .product__img-wrap {
+  width: 100%;
+  min-height: 400px;
+}
+
 .product--coming-soon .product__img-wrap::after {
   content: "Sắp ra mắt";
   position: absolute;
