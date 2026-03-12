@@ -93,7 +93,7 @@
               <div class="product__img-wrap product__img-wrap--blue">
                 <img
                   class="product__img"
-                  src="Hinh anh/Hinh san pham/Cat backgound/Sua de.png"
+                  src="Hinh anh/Hinh san pham chup/Ludee - nen trang 1.png"
                   alt="Sữa tắm Ludee Care hương sữa dê"
                 />
               </div>
@@ -355,6 +355,21 @@
       <div class="product-modal__box">
         <button type="button" class="product-modal__close" aria-label="Đóng">×</button>
         <div class="product-modal__img-wrap">
+          <div class="product-modal__zoom-lens" aria-hidden="true"></div>
+          <button
+            type="button"
+            class="product-modal__img-arrow product-modal__img-prev"
+            aria-label="Xem hình sản phẩm trước"
+          >
+            &#8249;
+          </button>
+          <button
+            type="button"
+            class="product-modal__img-arrow product-modal__img-next"
+            aria-label="Xem hình sản phẩm tiếp theo"
+          >
+            &#8250;
+          </button>
           <img id="productModalImg" class="product-modal__img" src="" alt="" />
         </div>
         <div class="product-modal__body">
@@ -394,7 +409,11 @@
         var products = {
           1: {
             title: "Sữa tắm Ludee Care hương sữa dê",
-            img: "Hinh anh/Hinh san pham/Cat backgound/Sua de.png",
+            img: "Hinh anh/Hinh san pham chup/Ludee - nen trang 1.png",
+            images: [
+              "Hinh anh/Hinh san pham chup/Ludee - nen trang 1.png",
+              "Hinh anh/Hinh san pham chup/Ludee - nen trang 2.png"
+            ],
             desc: "Công thức giàu dưỡng chất từ sữa dê giúp làm sạch nhẹ nhàng, nuôi dưỡng làn da mềm mịn và sáng khỏe sau mỗi lần tắm.",
             usage: "Sữa tắm dưỡng sáng da LUDEE CARE nhẹ nhàng làm sạch bụi bẩn và mồ hôi trên da. Công thức chứa dầu cám gạo kết hợp cùng Hydroxyethyl Urea, Allantoin, PPG-3 Caprylyl Ether và Polyquaternium-7 giúp dưỡng ẩm, làm dịu, nuôi dưỡng làn da mềm mịn, đàn hồi và sáng khỏe mỗi ngày. Hương thơm quyến rũ lan tỏa trên da, mang đến cảm giác thư giãn và dễ chịu sau mỗi lần tắm."
           },
@@ -414,11 +433,29 @@
         var modal = document.getElementById("productModal");
         var backdrop = modal.querySelector(".product-modal__backdrop");
         var closeBtn = modal.querySelector(".product-modal__close");
+        var nextImgBtn = modal.querySelector(".product-modal__img-next");
+        var prevImgBtn = modal.querySelector(".product-modal__img-prev");
+        var zoomLens = modal.querySelector(".product-modal__zoom-lens");
+        var zoomImgEl = modal.querySelector("#productModalImg");
+        var currentImages = null;
+        var currentImageIndex = 0;
+
+        function setModalImage(src, alt) {
+          var imgEl = zoomImgEl;
+          if (!imgEl) return;
+          imgEl.setAttribute("src", src);
+          imgEl.setAttribute("alt", alt || "");
+          if (zoomLens) {
+            zoomLens.style.backgroundImage = "url(\"" + src + "\")";
+          }
+        }
+
         function openModal(id) {
           var p = products[id];
           if (!p) return;
-          modal.querySelector("#productModalImg").setAttribute("src", p.img);
-          modal.querySelector("#productModalImg").setAttribute("alt", p.title);
+          currentImages = Array.isArray(p.images) && p.images.length ? p.images : null;
+          currentImageIndex = 0;
+          setModalImage(p.img, p.title);
           modal.querySelector("#productModalTitle").textContent = p.title;
           modal.querySelector("#productModalDesc").textContent = p.desc;
           modal.querySelector("#productModalVolume").textContent = "1 lít";
@@ -426,11 +463,77 @@
           modal.setAttribute("aria-hidden", "false");
           modal.classList.add("product-modal--open");
           document.body.style.overflow = "hidden";
+
+          var showArrows = currentImages && currentImages.length > 1;
+          if (nextImgBtn) nextImgBtn.style.display = showArrows ? "flex" : "none";
+          if (prevImgBtn) prevImgBtn.style.display = showArrows ? "flex" : "none";
         }
         function closeModal() {
           modal.setAttribute("aria-hidden", "true");
           modal.classList.remove("product-modal--open");
           document.body.style.overflow = "";
+        }
+        function changeImage(delta) {
+          if (!currentImages || currentImages.length < 2) return;
+          currentImageIndex =
+            (currentImageIndex + delta + currentImages.length) % currentImages.length;
+          setModalImage(
+            currentImages[currentImageIndex],
+            modal.querySelector("#productModalTitle").textContent
+          );
+        }
+
+        // Simple magnifying glass effect on popup image
+        if (zoomLens && zoomImgEl) {
+          var lensDiameter = 200;
+          var lensRadius = lensDiameter / 2;
+          zoomLens.style.width = lensDiameter + "px";
+          zoomLens.style.height = lensDiameter + "px";
+
+          function moveLens(e) {
+            var imgRect = zoomImgEl.getBoundingClientRect();
+            var wrapRect = zoomImgEl.parentElement.getBoundingClientRect();
+
+            // Vị trí chuột tương đối so với ảnh
+            var x = e.clientX - imgRect.left;
+            var y = e.clientY - imgRect.top;
+
+            // Cho phép kính lúp đi tự do, kể cả khi chạm mép ảnh
+            var lensLeft = imgRect.left - wrapRect.left + x - lensRadius;
+            var lensTop = imgRect.top - wrapRect.top + y - lensRadius;
+
+            zoomLens.style.left = lensLeft + "px";
+            zoomLens.style.top = lensTop + "px";
+
+            // Tính phần trăm vị trí trong ảnh, có giới hạn 0–100% để tránh nhảy nền
+            var percentX = Math.max(0, Math.min(100, (x / imgRect.width) * 100));
+            var percentY = Math.max(0, Math.min(100, (y / imgRect.height) * 100));
+            zoomLens.style.backgroundPosition = percentX + "% " + percentY + "%";
+          }
+
+          function handleEnter() {
+            zoomLens.style.display = "block";
+          }
+          function handleLeave() {
+            zoomLens.style.display = "none";
+          }
+
+          zoomImgEl.addEventListener("mouseenter", handleEnter);
+          zoomImgEl.addEventListener("mouseleave", handleLeave);
+          zoomImgEl.addEventListener("mousemove", moveLens);
+        }
+
+        if (nextImgBtn) {
+          nextImgBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            changeImage(1);
+          });
+        }
+        if (prevImgBtn) {
+          prevImgBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            changeImage(-1);
+          });
         }
         document.querySelectorAll(".product__cta:not(.product__cta--disabled)").forEach(function (btn) {
           btn.addEventListener("click", function () {

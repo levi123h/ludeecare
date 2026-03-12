@@ -519,7 +519,8 @@ img {
 .product__img-wrap {
   border-radius: 20px;
   padding: 24px 16px;
-  min-height: 200px;
+  width: 100%;
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -577,17 +578,17 @@ img {
   z-index: 1;
 }
 
+/* Slightly reduce size of first product image so it breathes inside same frame */
+.product__img-wrap--blue .product__img {
+  max-height: 360px;
+}
+
 .product--coming-soon .product__img {
   filter: blur(3px);
   opacity: 0.75;
 }
 
 /* Keep same frame size as card 1 when card 2/3 have no image */
-.product--coming-soon .product__img-wrap {
-  width: 100%;
-  min-height: 400px;
-}
-
 .product--coming-soon .product__img-wrap::after {
   content: "Sắp ra mắt";
   position: absolute;
@@ -1237,6 +1238,7 @@ img {
   justify-content: center;
   padding: 32px;
   background: linear-gradient(165deg, #f2ecff 0%, #e8e0f7 100%);
+  position: relative;
 }
 .product-modal__img {
   max-width: 100%;
@@ -1244,6 +1246,50 @@ img {
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+.product-modal__zoom-lens {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(31, 31, 133, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  background-repeat: no-repeat;
+  background-size: 200% auto;
+  pointer-events: none;
+  display: none;
+  z-index: 3;
+}
+
+.product-modal__img-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31, 31, 133, 0.08);
+  color: #1f1f85;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.product-modal__img-arrow:hover {
+  background: rgba(31, 31, 133, 0.16);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.product-modal__img-prev {
+  left: 18px;
+}
+
+.product-modal__img-next {
+  right: 18px;
 }
 .product-modal__body {
   flex: 1 1 50%;
