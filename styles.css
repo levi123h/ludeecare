@@ -583,6 +583,11 @@ img {
   max-height: 360px;
 }
 
+/* Match product 2 image scale with product 1 */
+.product__img-wrap--berry .product__img {
+  max-height: 360px;
+}
+
 .product--coming-soon .product__img {
   filter: blur(3px);
   opacity: 0.75;
