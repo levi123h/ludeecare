@@ -588,6 +588,10 @@ img {
   max-height: 360px;
 }
 
+.product__img-wrap--lavender .product__img {
+  max-height: 360px;
+}
+
 .product--coming-soon .product__img {
   filter: blur(3px);
   opacity: 0.75;
